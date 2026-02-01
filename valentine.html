@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine?</title>
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffdee9, #b5fffc);
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .buttons {
+      position: relative;
+      width: 90vw;
+      max-width: 300px;
+      height: 180px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    #yes {
+      background-color: #4CAF50;
+      color: white;
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+    }
+
+    #no {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Effy will you be my valentine?</h1>
+
+  <div class="buttons">
+    <button id="yes" onclick="yesClicked()">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <script>
+    const noButton = document.getElementById("no");
+    const container = document.querySelector(".buttons");
+
+    function moveNoButton() {
+      const maxX = container.clientWidth - noButton.offsetWidth;
+      const maxY = container.clientHeight - noButton.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noButton.style.left = randomX + "px";
+      noButton.style.top = randomY + "px";
+    }
+
+    // Desktop
+    noButton.addEventListener("mouseover", moveNoButton);
+
+    // Mobile
+    noButton.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moveNoButton();
+    });
+
+    function yesClicked() {
+      document.body.innerHTML = "<h1>Yayyy 💖 See you on Valentine’s!</h1>";
+    }
+  </script>
+
+</body>
+</html>
